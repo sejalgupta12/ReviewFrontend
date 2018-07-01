@@ -1,13 +1,15 @@
+<div class="cont">
 <div class="login">
 	<h1>Login</h1>
-    <form method="post">
-    	<input type="text" placeholder="E-mail" required="required" />
-        <input type="password" placeholder="Password" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large" routerLink="./dashboard">Login in</button>
+    <form [formGroup]="loginForm">
+    	<input formControlName="email" type="text" placeholder="E-mail" required="required" />
+        <input formControlName="password" type="password" placeholder="Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" routerLink="./dashboard" (click)="login()" (click)="moveToRegister()">Login in</button>
 
     <div class="d-flex bd-highlight mb-3">
       <div class="mr-auto p-2 bd-highlight"><a routerLink="./register" style="color: rgba(240, 226, 226, 0.603);font-size: .8em">Sign in</a></div>
-      <div class="p-2 bd-highlight"><a style="color: rgba(240, 226, 226, 0.603);font-size: .8em">forgot password?</a></div>
+      <div class="p-2 bd-highlight"><a routerLink="./forgot-pass" style="color: rgba(240, 226, 226, 0.603);font-size: .8em">forgot password?</a></div>
     </div>
     </form>
+</div>
 </div>
