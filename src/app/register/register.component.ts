@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { UserService } from './../user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -10,23 +11,19 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
+  t={username:"",email:"",pass:"",cpass:""};
+
   registerForm=new FormGroup({
     username:new FormControl(null,[Validators.required]),
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null,[Validators.required]),
     cpass:new FormControl(null,[Validators.required])
   })
-  constructor(private _router:Router,private _userService:UserService) { }
+  constructor(private router:Router,private http:HttpClient) { }
 
   ngOnInit() {
   }
 
-  moveToLogin()
-  {
-    this._router.navigate(['/login']);
-
-  }
-  
   register()
   {
     if(!this.registerForm.valid || (this.registerForm.controls.password.valid != this.registerForm.controls.cpass.valid))
@@ -36,11 +33,33 @@ export class RegisterComponent implements OnInit {
   }
   
   else
-  this._userService.register(JSON.stringify(this.registerForm.value)).subscribe(
-    data=>{console.log(data);
-      this._router.navigate(['/login']);},
-      error=>console.error(error)
-  )
-  // console.log(JSON.stringify(this.registerForm.value));
-}
+  {
+    this.http.
+    post("http://localhost:8080/register",{username:this.t.username,email:this.t.email,password:this.t.pass})
+    .subscribe((data)=>{
+        console.log(data);
+    })
+
+    console.log("Send called from ANGULAR");
+
+    this.http.post("http://localhost:8080/send",{email:this.t.email}).subscribe((data)=>{
+        console.log(data);
+
+        console.log("msgg from node ");
+
+         if(data=='sent'){
+
+          console.log("success from node");
+         }
+        else{
+           console.log("Error");
+         }
+    })
+
+    this.t.username="";
+    this.t.email="";
+    this.t.pass="";
+    this.t.cpass="";
+   }
+  }
 }

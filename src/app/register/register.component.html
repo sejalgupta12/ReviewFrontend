@@ -1,10 +1,10 @@
 <div class="register">
 	<h1>Register</h1>
     <form [formGroup]="registerForm">
-      <input formControlName="username" type="text" placeholder="Username" required="required" />
-      <input formControlName="email" type="email" placeholder="E-mail" required="required" />
-        <input formControlName="password" type="password" placeholder="Password" required="required" />
-        <input formControlName="cpass" type="password" placeholder="Confirm-Password" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()" (click)="moveToLogin()">Register</button>
+      <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required="required" />
+      <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required="required" />
+        <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required="required" />
+        <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()">Register</button>
     </form>
 </div>
