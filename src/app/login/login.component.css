@@ -11,27 +11,34 @@
 
 * { -webkit-box-sizing:border-box; -moz-box-sizing:border-box; -ms-box-sizing:border-box; -o-box-sizing:border-box; box-sizing:border-box; }
 
-
+.form-container{
+	padding:20px 30px;
+	-webkit-box-shadow: 2px 5px 19px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 5px 19px 1px rgba(0,0,0,0.75);
+    box-shadow: 2px 5px 19px 1px rgba(0,0,0,0.75);
+}
 
 .login { 
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -150px 0 0 -150px;
-	width:300px;
-	height:300px;
+	top: 40%;
+	left: 47%;
+	margin: -100px 0 0 -150px;
+	width:350px;
+	height:275px;
+	background: #fff;
+	opacity: 0.98;
 }
-.login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
+.login h2 { margin-bottom: 15px;color: rgba(255, 255, 255, 0.918); text-shadow: 0 0 10px rgba(0,0,0,0.3);color:#4a77d4; letter-spacing:1px; text-align:center; }
 
 input { 
 	width: 100%; 
-	margin-bottom: 10px; 
-	background: rgba(0,0,0,0.3);
+	margin-bottom: 15px; 
+	/* background: rgba(0,0,0,0.3); */
 	border: none;
 	outline: none;
 	padding: 10px;
 	font-size: 13px;
-	color: #fff;
+	color: black;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 	border: 1px solid rgba(0,0,0,0.3);
 	border-radius: 4px;
@@ -42,4 +49,49 @@ input {
 	-ms-transition: box-shadow .5s ease;
 	transition: box-shadow .5s ease;
 }
-input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+/* input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); } */
+
+
+.v-header{
+height: 100vh;
+display: flex;
+color:#fff;
+align-items:center;
+}
+
+.container-fluid{
+	max-width: 960px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin: auto;
+	text-align: center;
+
+}
+
+.fullscreen-video-wrap{
+	position: absolute;
+	left:0;
+	top:0;
+	right:0;
+	width: 100%;
+	height:100vh;
+	overflow: hidden;
+
+}
+
+.fullscreen-video-wrap video{
+	min-width: 100%;
+	min-height: 100%;
+}
+
+.header-overlay{
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	left:0;
+	right:0;
+	background: #225470;
+	z-index:1;
+	opacity: 0.85;
+}

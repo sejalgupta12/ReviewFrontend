@@ -11,7 +11,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  t={username:"",email:"",pass:"",cpass:""};
+  t={username:"",email:"",pass:"",cpass:"",flag:"false"};
 
   registerForm=new FormGroup({
     username:new FormControl(null,[Validators.required]),
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
   else
   {
     this.http.
-    post("http://localhost:8080/register",{username:this.t.username,email:this.t.email,password:this.t.pass})
+    post("http://localhost:8080/register",{username:this.t.username,email:this.t.email,password:this.t.pass,flag:this.t.flag})
     .subscribe((data)=>{
         console.log(data);
     })

@@ -1,10 +1,13 @@
+
+
 <div class="register">
-	<h1>Register</h1>
-    <form [formGroup]="registerForm">
-      <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required="required" />
-      <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required="required" />
-        <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required="required" />
-        <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required="required" />
+	
+    <form [formGroup]="registerForm" class="form-container">
+      <h2>Register</h2>
+      <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required/>
+      <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required />
+        <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required/>
+        <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required/>
         <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()">Register</button>
     </form>
 </div>

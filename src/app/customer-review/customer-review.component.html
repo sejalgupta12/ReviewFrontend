@@ -1,0 +1,28 @@
+<div class="review">
+
+    <form class="form-container">
+            <h3>Customer Review</h3>
+
+            <div class="input-group mb-3" name="Business" [(ngModel)]="t.bname">
+                    <select class="custom-select" id="inputGroupSelect02">
+                      <option selected>Choose...</option>
+                      <option *ngFor = " let a of business ">{{a.email}}</option>
+                    </select>
+            </div>
+        
+            <div class="input-group mb-3">
+             <select class="custom-select" name="star" [(ngModel)]="star">
+               <option selected>Choose...</option>
+                <option value=5>5</option>
+                <option value=4>4</option>
+                <option value=3>3</option>
+                <option value=2>2</option>
+                <option value=1>1</option>        
+            </select>
+           </div>
+       
+        <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="rate()">Submit</button>
+
+
+    </form>
+</div>

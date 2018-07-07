@@ -1,8 +1,15 @@
 <div class="forgot-pass">
-	<h1>Change Password</h1>
-    <form method="post">
-        <input type="text" placeholder="Enter New Password" required="required" />
-        <input type="text" placeholder="Confirm Password" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large">Change Password</button>
+	
+    <form method="post" class="form-container">
+        <h3>Change Password</h3>
+        <input type="email" name="email" [(ngModel)]="t.email" placeholder="Enter register email id" required="required" />
+       
+        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="fpassword()">Change Password</button>
     </form>
+
+   
+    
+   
 </div>
+
+

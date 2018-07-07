@@ -1,19 +1,43 @@
-<br>
-<div class="alert alert-danger" style="text-align: center" role="alert" *ngIf="mode">
-    Invalid login
-  </div>
 
-<div class="login">
-    <h1 style="margin-bottom: 10px">Login</h1>
+<!-- <div class="login">
     
-    <form [formGroup]="loginForm">
+    <form [formGroup]="loginForm" class="form-container">
+        <h2>Login</h2>
     	<input formControlName="email" type="text" placeholder="E-mail" [(ngModel)]="l.email" required="required" />
         <input formControlName="password" type="password" placeholder="Password" [(ngModel)]="l.pass" required="required" />
-        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="login()">Login in</button>
+        <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="login()">Login in</button>
 
     <div class="d-flex bd-highlight mb-3">
       <div class="mr-auto p-2 bd-highlight"><a routerLink="./register" style="color: rgba(240, 226, 226, 0.603);font-size: .8em">Sign in</a></div>
       <div class="p-2 bd-highlight"><a routerLink="./forgot-pass" style="color: rgba(240, 226, 226, 0.603);font-size: .8em">forgot password?</a></div>
     </div>
     </form>
-</div>
+</div> -->
+
+
+<header class="v-header container-fluid">
+  <div class="fullscreen-video-wrap">
+     <video src="./assets/video/video1.mov" autoplay="true" loop="true"></video>
+  </div>
+  <div class="header-overlay">
+    <div class="header-content login">
+        <form [formGroup]="loginForm" class="form-container">
+            <h2>Login</h2>
+          <input formControlName="email" type="text" placeholder="E-mail" [(ngModel)]="l.email" required="required" />
+            <input formControlName="password" type="password" placeholder="Password" [(ngModel)]="l.pass" required="required" />
+            <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="login()">Login in</button>
+    
+        <div class="d-flex bd-highlight mb-3" style="margin-top:5px">
+          <div class="mr-auto p-2 bd-highlight"><a routerLink="./register" style="color: rgb(58, 56, 56);font-size: .8em;font-weight:600">Sign in</a></div>
+          <div class="p-2 bd-highlight"><a routerLink="./forgot-pass" style="color: rgb(58, 56, 56);font-size: .8em;font-weight:600">forgot password?</a></div>
+        </div>
+        </form>
+
+    </div>
+  </div>
+
+</header>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

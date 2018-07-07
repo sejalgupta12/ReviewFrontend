@@ -1,0 +1,7 @@
+  <form class="form-container">
+    <h2>Reset Password</h2>
+    <input name="password" type="password" placeholder="Enter New Password" [(ngModel)]="l.password" required="required" />
+    <input name="cpassword" type="password" placeholder="Confirm Password" [(ngModel)]="l.cpassword" required="required" />
+    <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="resetPass()">Reset Password</button>
+
+</form>
