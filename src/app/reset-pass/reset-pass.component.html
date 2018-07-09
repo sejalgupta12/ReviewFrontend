@@ -1,7 +1,18 @@
-  <form class="form-container">
-    <h2>Reset Password</h2>
-    <input name="password" type="password" placeholder="Enter New Password" [(ngModel)]="l.password" required="required" />
-    <input name="cpassword" type="password" placeholder="Confirm Password" [(ngModel)]="l.cpassword" required="required" />
-    <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="resetPass()">Reset Password</button>
+<header class="v-header container-fluid">
+    <div class="fullscreen-video-wrap">
+       <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
+    </div>
+    <div class="header-overlay">
+      <div class="header-content reset">
+      <form class="form-container">
+         <h2>Reset Password</h2>
+         <input name="password" type="password" placeholder="Enter New Password" [(ngModel)]="l.password" required="required" />
+         <input name="cpassword" type="password" placeholder="Confirm Password" [(ngModel)]="l.cpassword" required="required" />
+         <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="resetPass()">Reset Password</button>
+      </form>
+      
+    </div>
+  </div>
 
-</form>
+</header>
+

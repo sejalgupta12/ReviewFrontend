@@ -1,5 +1,6 @@
+import { AuthService } from './auth.service';
 import { CustomerReviewComponent } from './customer-review/customer-review.component';
-
+import { AuthGuard } from './auth.guard';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -16,6 +17,7 @@ import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
+import { StartComponent } from './start/start.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +27,7 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     DashboardComponent,
     CustomerReviewComponent,
     ResetPassComponent,
-  
-
-   
+    StartComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +39,7 @@ import { ResetPassComponent } from './reset-pass/reset-pass.component';
     FormsModule
 
   ],
-  providers: [UserService],
+  providers: [UserService,AuthGuard,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

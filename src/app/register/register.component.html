@@ -1,13 +1,21 @@
 
 
-<div class="register">
+<header class="v-header container-fluid">
+        <div class="fullscreen-video-wrap">
+           <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
+        </div>
+        <div class="header-overlay">
+          <div class="header-content register">
 	
-    <form [formGroup]="registerForm" class="form-container">
-      <h2>Register</h2>
-      <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required/>
-      <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required />
-        <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required/>
-        <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required/>
-        <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()">Register</button>
-    </form>
+      <form [formGroup]="registerForm" class="form-container">
+          <h2>Register</h2>
+          <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required/>
+          <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required />
+          <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required/>
+          <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required/>
+          <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()">Register</button>
+     </form>
 </div>
+</div>
+
+</header>

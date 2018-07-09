@@ -1,3 +1,4 @@
+import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-
+email="Getting your email"
 
   width = 600;
   height = 400;
@@ -57,9 +58,37 @@ export class DashboardComponent implements OnInit {
 
 
 
-  constructor(private http:HttpClient,private route :Router) { }
+  constructor(private http:HttpClient,private route :Router,private user:UserService) { }
 
   ngOnInit() {
+
+    this.user.getData().subscribe(data=>{
+  
+      if(data.status==true)
+      {
+      this.email=data.email;
+      }
+    })
+    
+    this.http. 
+    post("http://localhost:8080/graph",{})
+    .subscribe((data)=>{
+     
+    
+     this.dataSource.data[4].value= data[0].rate5;
+
+     this.dataSource.data[3].value= data[0].rate4;
+
+     this.dataSource.data[2].value= data[0].rate3;
+
+     this.dataSource.data[1].value= data[0].rate2;
+
+     this.dataSource.data[0].value= data[0].rate1;
+
+
+
+    })
+
   }
 
   logout(){

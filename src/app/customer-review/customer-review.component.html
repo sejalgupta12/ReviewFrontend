@@ -1,15 +1,19 @@
-<div class="review">
+<header class="v-header container-fluid">
+    <div class="fullscreen-video-wrap">
+       <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
+    </div>
+    <div class="header-overlay">
+      <div class="header-content review">
+        <form class="form-container">
+            <h2>Customer Review</h2>
 
-    <form class="form-container">
-            <h3>Customer Review</h3>
-
-            <div class="input-group mb-3" name="Business" [(ngModel)]="t.bname">
-                    <select class="custom-select" id="inputGroupSelect02">
+            <div class="input-group mb-3">
+                    <select class="custom-select" id="inputGroupSelect02"  name="Business" [(ngModel)]="t.bname">
                       <option selected>Choose...</option>
                       <option *ngFor = " let a of business ">{{a.email}}</option>
                     </select>
             </div>
-        
+<!--         
             <div class="input-group mb-3">
              <select class="custom-select" name="star" [(ngModel)]="star">
                <option selected>Choose...</option>
@@ -19,10 +23,60 @@
                 <option value=2>2</option>
                 <option value=1>1</option>        
             </select>
-           </div>
+           </div> -->
+
+          <div class="stars" data-rating="3">
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+            <span class="star">&nbsp;</span>
+        </div>
+        
        
-        <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="rate()">Submit</button>
+         <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="rate()">Submit</button>
+
+        </form>
+      
+    </div>
+  </div>
+
+</header>
 
 
-    </form>
-</div>
+
+
+<script>
+        
+  //initial setup
+  document.addEventListener('DOMContentLoaded', function(){
+      let stars = document.querySelectorAll('.star');
+      stars.forEach(function(star){
+          star.addEventListener('click', setRating); 
+      });
+      
+      let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
+      let target = stars[rating - 1];
+      target.dispatchEvent(new MouseEvent('click'));
+  });
+  function setRating(ev){
+      let span = ev.currentTarget;
+      let stars = document.querySelectorAll('.star');
+      let match = false;
+      let num = 0;
+      stars.forEach(function(star, index){
+          if(match){
+              star.classList.remove('rated');
+          }else{
+              star.classList.add('rated');
+          }
+          //are we currently looking at the span that was clicked
+          if(star === span){
+              match = true;
+              num = index + 1;
+          }
+      });
+      document.querySelector('.stars').setAttribute('data-rating', num);
+  }
+  
+</script>

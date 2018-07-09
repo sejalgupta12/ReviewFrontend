@@ -11,12 +11,16 @@ export class CustomerReviewComponent implements OnInit {
 
  business;
  star;
+
+ name;
  
  t={bname:"",rate5:0,rate4:0,rate3:0,rate2:0,rate1:0};
+
 
   constructor(private http:HttpClient) { }
 
   ngOnInit() {
+    this.t.bname = this.name;
 
     this.http.post("http://localhost:8080/business",{})
     .subscribe((data)=>{

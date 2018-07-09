@@ -1,7 +1,9 @@
+import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import { UserService } from './../user.service';
 
 
 @Component({
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null,[Validators.required])
   })
-  constructor(private http : HttpClient,private route:Router) { }
+  constructor( private auth:AuthService,private http : HttpClient,private route:Router) { }
 
   l={email:"",pass:""};
 
@@ -41,7 +43,8 @@ export class LoginComponent implements OnInit {
 
 
         console.log("Login success");
-                this.route.navigate(['/dashboard']);        
+                this.route.navigate(['/dashboard']); 
+                this.auth.setLoggedIn(true);        
 
     } else 
     {

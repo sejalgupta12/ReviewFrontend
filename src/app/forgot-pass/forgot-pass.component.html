@@ -1,15 +1,19 @@
-<div class="forgot-pass">
-	
+<header class="v-header container-fluid">
+  <div class="fullscreen-video-wrap">
+     <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
+  </div>
+  <div class="header-overlay">
+    <div class="header-content forgot">
     <form method="post" class="form-container">
-        <h3>Change Password</h3>
+        <h2>Change Password</h2>
         <input type="email" name="email" [(ngModel)]="t.email" placeholder="Enter register email id" required="required" />
        
         <button type="submit" class="btn btn-primary btn-block btn-large" (click)="fpassword()">Change Password</button>
     </form>
 
-   
-    
-   
 </div>
+</div>
+
+</header>
 
 

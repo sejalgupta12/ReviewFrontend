@@ -1,53 +1,54 @@
- <div class="container-fluid" style="padding: 0px">
+<div class="container-fluid" style="padding: 0px">
      
-  <div style="background-color: white">
-
-        <!-- Header-->
-        
-            <div class="row">
-  
-                <div class="col-sm-10">
-                    <h1 style="margin-left: 50px;">Dashboard</h1>
-                </div>
-  
-                <div class="col-sm-2">
-                  <button type="button" (click)="logout()">logout</button>
-                </div>
-  
-               
-            </div>
-  
-            <div class="row">
-  
-                      <div class="col-sm-12">
-                            <fusioncharts
-                            [width]="width"
-                            [height]="height"
-                            [type]="type"
-                            [dataFormat]="dataFormat"
-                            [dataSource]="dataSource">
-                        </fusioncharts>
-  
-                      </div>
-            </div>
-  
+        <div style="background-color: white">
       
-  
-    </div>
-  
- </div>
- 
-  <script src="assets/assets/js/vendor/jquery-2.1.4.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
-  <script src="assets/assets/js/plugins.js"></script>
-  <script src="assets/assets/js/main.js"></script>
-
-
-  <script src="assets/assets/js/lib/chart-js/Chart.bundle.js"></script>
-  <script src="assets/assets/js/dashboard.js"></script>
-  <script src="assets/assets/js/widgets.js"></script>
-  <script src="assets/assets/js/lib/vector-map/jquery.vmap.js"></script>
-  <script src="assets/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
-  <script src="assets/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
-  <script src="assets/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
- 
+              <!-- Header-->
+              
+                  <div class="row">
+        
+                      <div class="col-sm-10">
+                          <h1 style="margin-left: 50px;">Dashboard</h1>
+                          {{email}}
+                      </div>
+        
+                      <div class="col-sm-2">
+                        <button type="button" (click)="logout()">logout</button>
+                      </div>
+        
+                     
+                  </div>
+        
+                  <div class="row">
+        
+                            <div class="col-sm-12">
+                                  <fusioncharts
+                                  [width]="width"
+                                  [height]="height"
+                                  [type]="type"
+                                  [dataFormat]="dataFormat"
+                                  [dataSource]="dataSource">
+                              </fusioncharts>
+        
+                            </div>
+                  </div>
+        
+            
+        
+          </div>
+        
+       </div>
+       
+        <script src="assets/assets/js/vendor/jquery-2.1.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+        <script src="assets/assets/js/plugins.js"></script>
+        <script src="assets/assets/js/main.js"></script>
+      
+      
+        <script src="assets/assets/js/lib/chart-js/Chart.bundle.js"></script>
+        <script src="assets/assets/js/dashboard.js"></script>
+        <script src="assets/assets/js/widgets.js"></script>
+        <script src="assets/assets/js/lib/vector-map/jquery.vmap.js"></script>
+        <script src="assets/assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+        <script src="assets/assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+        <script src="assets/assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
+       
