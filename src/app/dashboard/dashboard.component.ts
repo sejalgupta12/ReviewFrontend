@@ -1,4 +1,6 @@
+import { AuthService } from './../auth.service';
 import { UserService } from './../user.service';
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -10,7 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-email="Getting your email"
+//email="";
+temp = {};
 
   width = 600;
   height = 400;
@@ -33,23 +36,23 @@ email="Getting your email"
   "data": [
       {
           "label": "1",
-          "value": "20"
+          "value": "0"
       },
       {
           "label": "2",
-          "value": "30"
+          "value": "0"
       },
       {
           "label": "3",
-          "value": "10"
+          "value": "0"
       },
       {
           "label": "4",
-          "value": "30"
+          "value": "0"
       },
       {
         "label": "5",
-        "value": "10"
+        "value": "0"
     }
   ]
 };
@@ -58,17 +61,28 @@ email="Getting your email"
 
 
 
-  constructor(private http:HttpClient,private route :Router,private user:UserService) { }
+  constructor(private http:HttpClient,private route :Router,private user :UserService) { }
 
+  
   ngOnInit() {
 
-    this.user.getData().subscribe(data=>{
-  
-      if(data.status==true)
-      {
-      this.email=data.email;
-      }
-    })
+
+    this.http.post("http://localhost:8080/data",{})
+    .subscribe((data)=>{
+    
+      this.temp =data;
+      
+       if(this.temp.status)
+       {
+
+       }
+    else{
+        this.logout();
+
+       }
+   })
+
+
     
     this.http. 
     post("http://localhost:8080/graph",{})
@@ -88,13 +102,13 @@ email="Getting your email"
 
 
     })
-
   }
+
+
 
   logout(){
 
-    this.http.
-    post("http://localhost:8080/dashboard",{})
+    this.http.post("http://localhost:8080/logout",{})
     .subscribe((data)=>{
         
       if(data=="logout"){

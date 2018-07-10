@@ -1,6 +1,9 @@
 import { AuthService } from './auth.service';
-import { CustomerReviewComponent } from './customer-review/customer-review.component';
+import { UserService } from './user.service';
 import { AuthGuard } from './auth.guard';
+
+import { CustomerReviewComponent } from './customer-review/customer-review.component';
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,13 +14,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserService } from './user.service';
 import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { StartComponent } from './start/start.component';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +42,7 @@ import { StartComponent } from './start/start.component';
     FormsModule
 
   ],
-  providers: [UserService,AuthGuard,AuthService],
+  providers: [AuthGuard,UserService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

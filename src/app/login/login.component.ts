@@ -1,9 +1,11 @@
 import { AuthService } from './../auth.service';
+
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { UserService } from './../user.service';
+import { request } from 'http';
+
 
 
 @Component({
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
     email:new FormControl(null,[Validators.email,Validators.required]),
     password:new FormControl(null,[Validators.required])
   })
-  constructor( private auth:AuthService,private http : HttpClient,private route:Router) { }
+  constructor( private http : HttpClient,private route:Router,private auth:AuthService) { }
 
   l={email:"",pass:""};
 
@@ -38,14 +40,16 @@ export class LoginComponent implements OnInit {
     post("http://localhost:8080/login",{email:this.l.email,password:this.l.pass})
     .subscribe((data)=>{
         
+      console.log("Error"+data);
 
       if (data==this.l.email) {
 
 
+        console.log(data);
         console.log("Login success");
-                this.route.navigate(['/dashboard']); 
-                this.auth.setLoggedIn(true);        
-
+                this.route.navigate(['dashboard']); 
+                this.auth.setLoggedIn(true);
+              
     } else 
     {
       console.log("error");
