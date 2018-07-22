@@ -4,9 +4,9 @@
   </div>
   <div class="header-overlay">
     <div class="header-content forgot">
-    <form method="post" class="form-container">
+    <form  [formGroup]="forgotForm" method="post" class="form-container">
         <h2>Change Password</h2>
-        <input type="email" name="email" [(ngModel)]="t.email" placeholder="Enter register email id" required="required" />
+        <input formControlName="email" type="email" name="email" [(ngModel)]="t.email" placeholder="Enter register email id" required="required" />
        
         <button type="submit" class="btn btn-primary btn-block btn-large" (click)="fpassword()">Change Password</button>
     </form>

@@ -20,7 +20,9 @@ import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
 import { ResetPassComponent } from './reset-pass/reset-pass.component';
 import { StartComponent } from './start/start.component';
- 
+import { Observable } from 'rxjs';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,10 +41,13 @@ import { StartComponent } from './start/start.component';
     ReactiveFormsModule,
     HttpClientModule,
     FusionChartsModule.forRoot(FusionCharts, Charts, FintTheme),
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
 
   ],
   providers: [AuthGuard,UserService,AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}

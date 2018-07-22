@@ -1,60 +1,287 @@
-<div class="container-fluid" style="padding: 0px"> 
-     
-        <div style="background-color: white">
-      
-              
-                  <div class="row">
-        
-                      <div class="col-sm-10">
-                          <h1 style="margin-left: 50px;">Dashboard</h1>
-                      </div>
-        
-                      <div class="col-sm-2">
-                        <button type="button" (click)="logout()">logout</button>
-                      </div>
-          
-                      <p>{{temp.email}}</p>
-                     
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Startmin - Bootstrap Admin Theme</title>
+
+        <!-- Bootstrap Core CSS -->
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="assets/css/metisMenu.min.css" rel="stylesheet">
+
+        <!-- Timeline CSS -->
+        <link href="assets/css/timeline.css" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link href="assets/css/startmin.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="assets/css/morris.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+
+        <div id="wrapper">
+
+         
+               <div class="d-flex flex-row" style="background-color:rgb(68, 66, 66)">
+				  <div class="d-flex text-white flex-grow-1">
+                    <h1 style="font-size:2em;color:rgb(250, 243, 243);margin-left:20px;margin-bottom:20px">Dashboard</h1>
                   </div>
-        
-                  <div class="row">
-        
-                            <div class="col-sm-12">
-                                  <fusioncharts
-                                  [width]="width"
-                                  [height]="height"
-                                  [type]="type"
-                                  [dataFormat]="dataFormat"
-                                  [dataSource]="dataSource">
-                              </fusioncharts>
-        
+          
+                <div class="d-flex text-white">
+                   <!-- <button type="button" class="btn btn-outline-warning" (click)="logout()" style="color:white">Logout</button> -->
+               
+               <img src="./assets/images1.jpg" style="margin-top:15px;margin-right:10px;border-radius:7em;width:40px;height:40px;cursor: pointer"  data-toggle="tooltip" data-placement="bottom" title="Logout"  (click)="logout()">
+                </div>
+                  
+              </div>
+                <!-- /.row -->
+                <div class="row" style="margin:20px 10px 0px 10px">
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel" style="background-color: rgb(87, 147, 170)">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-6 text-white">
+                                         <i class="material-icons d-flex" style="font-size:50px;color:yellow;">star</i>
+                                         <label style="font-size:1.3em;margin-left:2px" class="d-flex">5 star</label>
+                                    </div>
+                                    <div class="col-xs-6 text-right text-white">
+                                      <label style="font-size:1.3em;margin-top:12px" class="d-flex">Rating</label>
+                                      <label style="font-size:1.3em;margin-left:16px;margin-top:13px" class="d-flex">{{starrate.rate5}}</label>
+                                    </div>
+                                </div>
                             </div>
-                  </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel" style="background-color: rgb(101, 184, 101)">
+                            <div class="panel-heading">
+                                <div class="row">
+                                  <div class="col-xs-6 text-white">
+                                    <i class="material-icons d-flex" style="font-size:50px;color:yellow;">star</i>
+                                    <label style="font-size:1.3em;margin-left:2px" class="d-flex">4 star</label>
+                               </div>
+                               <div class="col-xs-6 text-right text-white">
+                                 <label style="font-size:1.3em;margin-top:12px" class="d-flex">Rating</label>
+                                 <label style="font-size:1.3em;margin-left:16px;margin-top:13px" class="d-flex">{{starrate.rate4}}</label>
+                               </div>
+                                </div>
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                  <div class="col-xs-6 text-white">
+                                    <i class="material-icons d-flex" style="font-size:50px;color:yellow;">star</i>
+                                    <label style="font-size:1.3em;margin-left:2px" class="d-flex">3 star</label>
+                               </div>
+                               <div class="col-xs-6 text-right text-white">
+                                 <label style="font-size:1.3em;margin-top:12px" class="d-flex">Rating</label>
+                                 <label style="font-size:1.3em;margin-left:16px;margin-top:13px" class="d-flex">{{starrate.rate3}}</label>
+                               </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+					<div class="col-lg-2 col-md-6">
+                        <div class="panel" style="background-color: rgb(219, 96, 96)">
+                            <div class="panel-heading">
+                                <div class="row">
+                                  <div class="col-xs-6 text-white">
+                                    <i class="material-icons d-flex" style="font-size:50px;color:yellow;">star</i>
+                                    <label style="font-size:1.3em;margin-left:2px" class="d-flex">2 star</label>
+                               </div>
+                               <div class="col-xs-6 text-right text-white">
+                                 <label style="font-size:1.3em;margin-top:12px" class="d-flex">Rating</label>
+                                 <label style="font-size:1.3em;margin-left:16px;margin-top:13px" class="d-flex">{{starrate.rate2}}</label>
+                               </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+					
+					
+                    <div class="col-lg-2 col-md-6">
+                        <div class="panel" style="background-color: rgb(101, 184, 101)">
+                            <div class="panel-heading">
+                                <div class="row">
+                                  <div class="col-xs-6 text-white">
+                                    <i class="material-icons d-flex" style="font-size:50px;color:yellow;">star</i>
+                                    <label style="font-size:1.3em;margin-left:2px" class="d-flex">1 star</label>
+                               </div>
+                               <div class="col-xs-6 text-right text-white">
+                                 <label style="font-size:1.3em;margin-top:12px" class="d-flex">Rating</label>
+                                 <label style="font-size:1.3em;margin-left:16px;margin-top:13px" class="d-flex">{{starrate.rate1}}</label>
+                               </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+					
+					<div class="col-lg-2 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-6 text-white">
+                                      <label style="font-size:1.3em;margin-left:2px;margin-top:15px" class="d-flex">Average</label>
+                                        <label style="font-size:1.3em;margin-left:2px;margin-top:5px;margin-bottom:9px" class="d-flex">Rating</label>
+                                    </div>
+                                    <div class="col-xs-6 text-right text-white">
+                                      <label style="font-size:1.3em;margin-left:18px;margin-top:20px" class="d-flex">{{average}}</label>
+                                     
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+					
+					
+					
+                </div>
+                <!-- /.row -->
+                <div class="row">
+                  <div class="col-lg-1"></div>
+                    <div class="col-lg-7">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                              <div class="row">
+                                <i class="material-icons d-flex" style="font-size:25px;margin-left:10px;margin-right:5px;color:rgb(63, 62, 62)">star</i> 
+                                <label style="font-size:1.2em;margin-top:2px">Star rating of website visitors</label>
+                            </div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" style="margin-left:50px">
+                               <fusioncharts
+                                   [width]="width"
+                                   [height]="height"
+                                   [type]="type"
+                                   [dataFormat]="dataFormat"
+                                   [dataSource]="dataSource">
+                               </fusioncharts>
+                            
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                        
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-8 -->
+                    <div class="col-lg-3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                               <div class="card" style="border-radius:1em;background-color: rgb(101, 171, 199)">
         
-            
+                                            <div class="card-header">
+                                                <!-- <h1 class="d-flex justify-content-center">image</h1><br> -->
+                                                <label style="font-size:2em;margin:6px 0px 6px 0px;color:white" class="d-flex justify-content-center">{{register.businessname}}</label>
+                                                        <!-- <a href="#" class="btn tag text-white bg-success  rounded ml-2 pad">update</a> -->
+                                               
+                                            </div>
+								</div>
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                 <div class="card">
         
-          </div>
+                                            <div class="card-body">
+                                                    <address>
+                                                            <strong style="font-size:1.2em;color:rgb(102, 168, 102)">{{register.username}}</strong><br>
+                                                            
+                                                          </address>
+                                                          <address>
+                                                            <strong>Email:</strong>&nbsp;
+                                                            <a href="mailto:#">{{temp[0].email}}</a><br>
+                                                              </address>
+                                                              <address>
+                                                                    <strong>Phone:</strong>
+                                                                    {{register.mobileNumber}}<br>
+                                                                  </address>
+                                                                  <address>
+                                                                        <strong>website:</strong>&nbsp;
+                                                                        <a href="mailto:#">{{register.websiteLink}}</a><br>
+                                                                      </address>
+                                                                      <address>
+                                                                          <strong>Country:</strong>
+                                                                          {{register.country}}<br>
+                                                                        </address>
+                                                                        <address>
+                                                                            <strong>City:</strong>
+                                                                            {{register.state}}<br>
+                                                                          </address>
+                                                                      <address>
+                                                                            <strong>City:</strong>
+                                                                            {{register.city}}<br>
+                                                                          </address>
+                                                                          <address>
+                                                                                <strong>address:</strong>
+                                                                                {{register.address1}}
+                                                                                {{register.address2}}<br>
+                                                                              </address>
+                                                                              <address>
+                                                                                    <strong>Registered At:</strong>
+                                                                                    {{register.date}}<br>
+                                                                                  </address>
+                                            </div>
         
-       </div>
-       
-       <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-       
+        
+                                    </div>
 
-        <a href="#" class="navbar-brand">Logo</a>
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                       
+                    </div>
+                    <!-- /.col-lg-4 -->
+
+                    <div class="col=lg-1"></div>
+                </div>
+                <!-- /.row -->
           
-            <div>
-              <ul class="navbar-nav my-2 my-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link my-2 my-sm-0" href="#"><span class="p"> Logout </span></a>
-                </li>
-                
-              </ul>
-             
-            </div> -->
 
-            
+        </div>
+        <!-- /#wrapper -->
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-       
+        <!-- jQuery -->
+        <script src="assets/js/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="assets/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="assets/js/metisMenu.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="assets/js/raphael.min.js"></script>
+        <script src="assets/js/morris.min.js"></script>
+        <script src="assets/js/morris-data.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="assets/js/startmin.js"></script>
+
+    </body>
+</html>

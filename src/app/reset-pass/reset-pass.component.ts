@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-reset-pass',
@@ -9,7 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResetPassComponent implements OnInit {
 
-  l ={email:"sejalgupta218@gmail.com",password:"",cpassword:""}
+  l ={password:"",cpassword:""}
+
+  resetForm=new FormGroup({
+
+    password:new FormControl(null,[Validators.required]),
+    cpass:new FormControl(null,[Validators.required])
+
+  })
 
   constructor(private route:Router,private http:HttpClient) { }
 
@@ -18,19 +26,30 @@ export class ResetPassComponent implements OnInit {
 
   resetPass(){
 
-    if(this.l.password!=this.l.cpassword){
-      alert("both password and confirm password shoould be same");
+  if(!this.resetForm.valid)
+    {
+      alert("Both the fields are required");
+   }
+    
+   else if(this.l.password!=this.l.cpassword){
+      alert("Password and Confirm Password must be same");
+      this.l.cpassword="";
+      this.l.password = "";
     }
 
     else{
       
-    this.http.post("http://localhost:8080/resetPass",{email:this.l.email,password:this.l.password,cpassword:this.l.cpassword}).subscribe((data)=>{
+    this.http.post("http://localhost:8080/resetPass",{password:this.l.password,cpassword:this.l.cpassword}).subscribe((data)=>{
        
         
-          if(data=='sent'){
+          if(data){
 
-            alert("Now Your password is changed");
-            this.route.navigate(['']);
+            console.log(data);
+          alert("Your password is Successfully Changed");
+          this.route.navigate(['login']);
+          this.l.cpassword="";
+          this.l.password = "";
+          
           }
 
         else{

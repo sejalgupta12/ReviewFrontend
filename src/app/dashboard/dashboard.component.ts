@@ -13,16 +13,19 @@ import { HttpClient } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 
 //email="";
-temp = {};
+temp = [{email:""}];
 
-  width = 600;
-  height = 400;
+starrate = {rate5:"",rate4:"",rate3:"",rate2:"",rate1:""};
+
+
+ register = {businessname:"",username:"",websiteLink:"",address1:"",address2:"",country:"",state:"",city:"",mobileNumber:"",date:""};
+ average;
+  width = "90%";
+  height = "70%";
   type = 'pie3d';
   dataFormat = 'json';
   dataSource = {
   "chart": {
-      "caption": "Star rating of website visitors",
-      "subcaption": "Last Year",
       "startingangle": "120",
       "showlabels": "0",
       "showlegend": "1",
@@ -61,7 +64,7 @@ temp = {};
 
 
 
-  constructor(private http:HttpClient,private route :Router,private user :UserService) { }
+  constructor(private http:HttpClient,private route :Router,private user :UserService,private auth : AuthService) { }
 
   
   ngOnInit() {
@@ -70,24 +73,42 @@ temp = {};
     this.http.post("http://localhost:8080/data",{})
     .subscribe((data)=>{
     
-      this.temp =data;
       
-       if(this.temp.status)
+       if(data)
        {
-
+         this.temp[0].email =data[0].email;
+        
        }
     else{
         this.logout();
+        
 
        }
    })
 
 
-    
-    this.http. 
-    post("http://localhost:8080/graph",{})
-    .subscribe((data)=>{
+   
+
+   this.http.post("http://localhost:8080/dashboardData",{})
+   .subscribe((data)=>{
      
+
+     this.register.businessname=data[0].businessname;
+     this.register.username=data[0].username;
+     this.register.websiteLink=data[0].websiteLink;
+     this.register.address1=data[0].address1;
+     this.register.address2=data[0].address2;
+     this.register.country=data[0].country;
+     this.register.state=data[0].state;
+     this.register.city=data[0].city;
+     this.register.mobileNumber=data[0].mobileNumber;
+     this.register.date = data[0].date;
+
+
+     
+    this.http. 
+    post("http://localhost:8080/graph",{bname:this.register.businessname})
+    .subscribe((data)=>{
     
      this.dataSource.data[4].value= data[0].rate5;
 
@@ -102,6 +123,36 @@ temp = {};
 
 
     })
+
+
+    
+    this.http.post("http://localhost:8080/rateData",{bname:this.register.businessname})
+    .subscribe((data)=>{
+      
+      console.log(data);
+      console.log(data[0].rate5);
+      
+   this.starrate.rate5 = data[0].rate5;
+   this.starrate.rate4 = data[0].rate4;
+   this.starrate.rate3 = data[0].rate3;
+   this.starrate.rate2 = data[0].rate2;
+   this.starrate.rate1 = data[0].rate1;
+   
+    parseInt(this.starrate.rate5)
+   this.average = Math.round(((parseInt(this.starrate.rate5)*5)+(parseInt(this.starrate.rate4)*4)+(parseInt(this.starrate.rate3)*3)+(parseInt(this.starrate.rate2)*2)+(parseInt(this.starrate.rate1)*1))/(parseInt(this.starrate.rate5)+parseInt(this.starrate.rate4)+parseInt(this.starrate.rate3)+parseInt(this.starrate.rate2)+parseInt(this.starrate.rate1)));
+
+   console.log(this.average);
+   
+    })
+   
+
+   })
+
+
+
+
+
+    
   }
 
 
@@ -113,7 +164,10 @@ temp = {};
         
       if(data=="logout"){
         this.route.navigate(['']);
-        console.log("Logout sucessfuly");
+        this.auth.setLoggedIn(false);
+        this.user.setEmail("");
+
+        
       }
 
 

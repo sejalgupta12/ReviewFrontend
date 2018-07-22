@@ -3,38 +3,40 @@
        <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
     </div>
     <div class="header-overlay">
+        <h1>Instant Ratings for the Website</h1>
       <div class="header-content review">
-        <form class="form-container">
-            <h2>Customer Review</h2>
+        <form class="form-container" class="form-group">
 
-            <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect02"  name="Business" [(ngModel)]="t.bname">
-                      <option selected>Choose...</option>
-                      <option *ngFor = " let a of business ">{{a.email}}</option>
-                    </select>
+            <div class="input-group mb-3 justify-content-center">
+                      <label style="font-size: 2.3em;margin-bottom:0;font-weight: 500;color:rgb(250, 245, 245)">{{business}}</label>
+                 
             </div>
-<!--         
+        
             <div class="input-group mb-3">
-             <select class="custom-select" name="star" [(ngModel)]="star">
+             <!-- <select class="custom-select" name="star" [(ngModel)]="star">
                <option selected>Choose...</option>
                 <option value=5>5</option>
                 <option value=4>4</option>
                 <option value=3>3</option>
                 <option value=2>2</option>
                 <option value=1>1</option>        
-            </select>
-           </div> -->
+            </select> -->
 
-          <div class="stars" data-rating="3">
-            <span class="star">&nbsp;</span>
-            <span class="star">&nbsp;</span>
-            <span class="star">&nbsp;</span>
-            <span class="star">&nbsp;</span>
-            <span class="star">&nbsp;</span>
-        </div>
-        
-       
-         <button type="submit" class="btn btn-primary btn-block btn-large" data-toggle="modal" data-target=".bd-example-modal-sm" (click)="rate()">Submit</button>
+            <div>
+            <ngb-rating [(rate)]="selected" [formControl]="ctrl" max="5">
+                    <ng-template let-fill="fill" let-index="index">
+                            <span class="star" [class.filled]="fill === 100">&#9733;</span>
+                          </ng-template>
+            </ngb-rating>
+            </div>
+            <div class="form-text medium">
+                    <div *ngIf="ctrl.valid" class="text-success">Thanks!</div>
+                    <div *ngIf="ctrl.invalid" class="text-white">Please rate us</div>
+            </div>
+          
+    </div>
+
+         <button type="submit" class="btn btn-primary btn-block btn-large" (click)="rate()">Submit</button>
 
         </form>
       
@@ -45,38 +47,3 @@
 
 
 
-
-<script>
-        
-  //initial setup
-  document.addEventListener('DOMContentLoaded', function(){
-      let stars = document.querySelectorAll('.star');
-      stars.forEach(function(star){
-          star.addEventListener('click', setRating); 
-      });
-      
-      let rating = parseInt(document.querySelector('.stars').getAttribute('data-rating'));
-      let target = stars[rating - 1];
-      target.dispatchEvent(new MouseEvent('click'));
-  });
-  function setRating(ev){
-      let span = ev.currentTarget;
-      let stars = document.querySelectorAll('.star');
-      let match = false;
-      let num = 0;
-      stars.forEach(function(star, index){
-          if(match){
-              star.classList.remove('rated');
-          }else{
-              star.classList.add('rated');
-          }
-          //are we currently looking at the span that was clicked
-          if(star === span){
-              match = true;
-              num = index + 1;
-          }
-      });
-      document.querySelector('.stars').setAttribute('data-rating', num);
-  }
-  
-</script>

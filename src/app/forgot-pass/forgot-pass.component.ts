@@ -1,6 +1,8 @@
+import { UserService } from './../user.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-forgot-pass',
@@ -9,7 +11,12 @@ import { Router } from '@angular/router';
 })
 export class ForgotPassComponent implements OnInit {
 
-  constructor(private router:Router,private http:HttpClient) { }
+  forgotForm=new FormGroup({
+   
+    email:new FormControl(null,[Validators.email,Validators.required])
+  })
+
+  constructor(private router:Router,private http:HttpClient,private user:UserService) { }
 
   t ={email:""};
   l={password:"",cpassword:""}
@@ -18,28 +25,40 @@ export class ForgotPassComponent implements OnInit {
   }
 
   fpassword(){
-
-
     
+    if(!this.forgotForm.controls.email.valid)
+    {
+   alert("Please Enter Valid Email Id");
+
+    }
+   
+   else if(!this.forgotForm.valid)
+    {
+      alert("Please Enter Email Id");
+   }
+    else
+    {
     this.http.post("http://localhost:8080/fsend",{email:this.t.email}).subscribe((data)=>{
        
         
          if(data=='sent'){
           
-    alert("Email is sent for reset new password");
-    this.router.navigate(['']);
+    alert("link for reset password is sent to your registered email id");
+    this.router.navigate(['login']);
    
 
          }
         else{
 
-          console.log("Email id not registered");
+         
           alert("Email id not registered");
          
          }
     })
 
 
+  
   }
 
+}
 }

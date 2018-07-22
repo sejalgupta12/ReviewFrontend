@@ -11,7 +11,7 @@ import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
-const routes: Routes = [{path:"",component:LoginComponent},{path:"start",component:StartComponent},{path:"register",component:RegisterComponent},{path:"forgot-pass",component:ForgotPassComponent},{path:"register",component:RegisterComponent},{path:"dashboard",component:DashboardComponent,canActivate:[AuthGuard]},{path:"customerReview",component:CustomerReviewComponent},{path:"reset-pass",component:ResetPassComponent}];
+const routes: Routes = [{path:"",component:StartComponent},{path:"login",component:LoginComponent},{path:"login/register",component:RegisterComponent},{path:"login/forgot-pass",component:ForgotPassComponent},{path:"dashboard",component:DashboardComponent,canActivate:[AuthGuard]},{path:"customerReview",component:CustomerReviewComponent},{path:"reset-pass",component:ResetPassComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

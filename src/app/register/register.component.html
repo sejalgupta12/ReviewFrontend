@@ -5,15 +5,51 @@
            <video src="./assets/video/video1.mp4" autoplay="true" loop="true"></video>
         </div>
         <div class="header-overlay">
+        
           <div class="header-content register">
 	
       <form [formGroup]="registerForm" class="form-container">
           <h2>Register</h2>
-          <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Username" required/>
+          <div>
+          <input formControlName="businessname" type="text" [(ngModel)]="t.businessname" placeholder="Business Name" required/>
+          <input formControlName="username" type="text"  [(ngModel)]="t.username" placeholder="Owner Name" required/>
+          </div>
+          <div>
           <input formControlName="email" type="email" [(ngModel)]="t.email" placeholder="E-mail" required />
+          <input formControlName="websiteLink" type="text"  [(ngModel)]="t.websiteLink" placeholder="Website Link" required/>
+        </div>
+        <div>
+          <input formControlName="Address1" type="text"  [(ngModel)]="t.address1" placeholder="Address Line 1" required/>
+          <input formControlName="Address2" type="text"  [(ngModel)]="t.address2" placeholder="Address Line 2" required/>
+      </div>
+    <div style="margin-bottom: 20px">
+           <select formControlName="Select1" style="width:50%;height:41px" class="custom-select" id="inputGroupSelect01"  name="t.country" [(ngModel)]="t.country" (change)="getState()">
+            <option selected>Choose...</option>
+            <option *ngFor = " let a of country ">{{a.name}}</option>
+          </select>
+          
+      <select formControlName="Select2" style="width:50%;height:41px" class="custom-select" id="inputGroupSelect02"  name="t.state" [(ngModel)]="t.state" (change)="getCity()">
+            <option selected>Choose...</option>
+            <option *ngFor = " let a of state ">{{a.name}}</option>
+          </select>
+
+    </div>
+<div>
+
+          <select formControlName="Select3" class="custom-select" style="width:50%;height:41px" id="inputGroupSelect03"  name="t.city" [(ngModel)]="t.city">
+            <option selected>Choose...</option>
+            <option *ngFor = " let a of city ">{{a.name}}</option>
+          </select>
+
+    
+          
+          <input formControlName="mobilenumber" type="text" [(ngModel)]="t.mobileNumber" placeholder="Mobile number" required/>
+</div>
+<div>
           <input formControlName="password" type="password" [(ngModel)]="t.pass" placeholder="Password" required/>
           <input formControlName="cpass" type="password" [(ngModel)]="t.cpass" placeholder="Confirm-Password" required/>
-          <button type="submit" class="btn btn-primary btn-block btn-large" (click)="register()">Register</button>
+        </div>
+          <button type="submit" class="btn btn-primary" (click)="register()">Register</button> 
      </form>
 </div>
 </div>
