@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
               post("http://localhost:8080/login",{email:this.l.email,password:this.l.pass})
               .subscribe((data)=>{
                   
-              
+          
                 if (data==this.l.email) {
           
                      this.user.setEmail(this.l.email);
@@ -65,7 +65,6 @@ export class LoginComponent implements OnInit {
                            this.user.setEmail("");
                            this.route.navigate(['login']);
                            alert("Authentication Failed! Please Enter a Valid Email Id and Password");
-                           this.auth.setLoggedIn(false);
                            
                             this.l.email="";
                             this.l.pass="";

@@ -1,6 +1,5 @@
 import { UserService } from './../user.service';
 import { HttpClient } from '@angular/common/http';
-
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -52,6 +51,7 @@ mode=false;
 
   getState(){
     var index= this.country.map(x => x.name).indexOf(this.t.country);
+    console.log(index);
 
     this.COUNTRY_CODE = this.country[index].id;
 
@@ -63,10 +63,10 @@ mode=false;
 
        for(let i of data){
       
-         
         if(i.country_id == index+1)
         {
           this.state.push(i);
+         
         }
 
        }
@@ -93,12 +93,12 @@ mode=false;
          
         if(i.state_id == index+1)
         {
-          console.log(i);
+      
           this.city.push(i);
         }
 
        }
-       console.log(this.city);
+       
      
        });
 

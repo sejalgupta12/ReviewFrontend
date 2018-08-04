@@ -79,11 +79,7 @@ starrate = {rate5:"",rate4:"",rate3:"",rate2:"",rate1:""};
          this.temp[0].email =data[0].email;
         
        }
-    else{
-        this.logout();
-        
-
-       }
+    
    })
 
 
@@ -156,7 +152,6 @@ starrate = {rate5:"",rate4:"",rate3:"",rate2:"",rate1:""};
   }
 
 
-
   logout(){
 
     this.http.post("http://localhost:8080/logout",{})
@@ -165,6 +160,7 @@ starrate = {rate5:"",rate4:"",rate3:"",rate2:"",rate1:""};
       if(data=="logout"){
         this.route.navigate(['']);
         this.auth.setLoggedIn(false);
+        localStorage.removeItem('loggedIn')
         this.user.setEmail("");
 
         
